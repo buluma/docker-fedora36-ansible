@@ -2,7 +2,7 @@ FROM buluma/fedora:36
 LABEL maintainer="Michael Buluma"
 ENV container=docker
 
-ENV pip_packages "ansible"
+ENV pip_packages "ansible wheel"
 
 RUN dnf -y update && dnf clean all
 
@@ -24,7 +24,6 @@ RUN dnf makecache \
    sudo \
    which \
    python3-dnf \
-   wheel \
  && dnf clean all
 
 # Install Ansible via Pip.
