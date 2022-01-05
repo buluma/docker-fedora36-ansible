@@ -18,23 +18,23 @@ RUN dnf -y install systemd && dnf clean all && \
   rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 # Install pip and other requirements.
-# RUN dnf makecache \
- # && dnf -y install \
- #   python3-pip \
- #   sudo \
- #   which \
- #   python3-dnf \
- # && dnf clean all
+RUN dnf makecache \
+ && dnf -y install \
+   python3-pip \
+   sudo \
+   which \
+   python3-dnf \
+ && dnf clean all
 
 # Install Ansible via Pip.
-# RUN pip3 install $pip_packages
+RUN pip3 install $pip_packages
 
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 
 # Install Ansible inventory file.
-# RUN mkdir -p /etc/ansible
-# RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
+RUN mkdir -p /etc/ansible
+RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 
 VOLUME ["/sys/fs/cgroup", "/tmp", "/run"]
 CMD ["/usr/sbin/init"]
