@@ -24,7 +24,7 @@ RUN dnf makecache \
    sudo \
    which \
    python3-dnf \
-   wheel
+   wheel \
  && dnf clean all
 
 # Install Ansible via Pip.
