@@ -1,5 +1,5 @@
 FROM buluma/fedora:36
-LABEL maintainer="Michael Buluma"
+LABEL maintainer="Michael Buluma<bulumaknight@gmail.com>"
 ENV container=docker
 
 ENV pip_packages "ansible wheel"
